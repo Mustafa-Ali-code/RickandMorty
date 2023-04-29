@@ -43,7 +43,9 @@ Here's a video that demos all of the app's implemented features:
 
 <img src='https://i.imgur.com/PgmtYD3.gif' title='Video Demo' width='' alt='Video Demo' />
 
-VIDEO created with **your chosen video tool**
+<img src='https://github.com/GuessIt-RickandMorty-Edition/Milestone-2/blob/master/xgrIMXr%20-%20Imgur.gif' title='Updated Video Demo' width='' alt='Updated Gif' />
+
+VIDEO created with "screenToGo"
 
 ## Notes
 
