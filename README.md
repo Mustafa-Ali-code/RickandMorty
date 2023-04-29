@@ -43,7 +43,9 @@ Here's a video that demos all of the app's implemented features:
 
 <img src='https://i.imgur.com/PgmtYD3.gif' title='Video Demo' width='' alt='Video Demo' />
 
-VIDEO created with **your chosen video tool**
+<img src='https://imgur.com/a/MJCgmJn' title='Updated Video Demo' width='' alt='Updated Gif'
+
+VIDEO created with "screenToGo"
 
 ## Notes
 
