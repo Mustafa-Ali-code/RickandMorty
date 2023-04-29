@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getCharacter() {
         val client = AsyncHttpClient()
-        val link = "https://rickandmortyapi.com/api/character/"
+        val link = "https://rickandmortyapi.com/api/character/?page=1"
         client[link, object : JsonHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Headers, json: JsonHttpResponseHandler.JSON) {
                 Log.d("Character Fetching", "response successful")
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 val characterArray = json.jsonObject.getJSONArray("results")
                 val characters = mutableListOf<characterAdapter.RMCharacter>()
 
-                val randomizedIndexes = (0 until characterArray.length()).shuffled()
+                val randomizedIndexes = (0 until characterArray.length()).shuffled().take(10)
 
                 for (i in randomizedIndexes) {
                     val characterObj = characterArray.getJSONObject(i)
@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             }
         }]
     }
+
 
     private fun checkAnswer(selectedIndex: Int, correctIndex: Int) {
         if (selectedIndex == correctIndex) {
