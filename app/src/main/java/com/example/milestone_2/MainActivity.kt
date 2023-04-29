@@ -1,17 +1,13 @@
 package com.example.milestone_2
 
 
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
@@ -29,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         rvCharacters = findViewById(R.id.character_list)
         characterList = mutableListOf()
 
-        val image = findViewById<ImageView>(R.id.character_image)
-        val status = findViewById<TextView>(R.id.status)
-        val episode = findViewById<TextView>(R.id.episode)
+        //val image = findViewById<ImageView>(R.id.character_image)
+        //val status = findViewById<TextView>(R.id.status)
+        //val episode = findViewById<TextView>(R.id.episode)
 
         getCharacter()
     }
@@ -52,8 +48,9 @@ class MainActivity : AppCompatActivity() {
                     val name = characterObj.getString("name")
                     val imageUrl = characterObj.getString("image")
                     val status = characterObj.getString("status")
-                    val episode = characterObj.getString("episode").substring(47, 49) //uming you want the first episode
-                    characters.add(characterAdapter.RMCharacter(name, imageUrl, status, episode))
+                    val episode = characterObj.getString("episode").substring(47, 49) // Assuming you want the first episode
+                    val correctNameIndex = (0..1).random() // Generate random index for correct answer (0 or 1)
+                    characters.add(characterAdapter.RMCharacter(name, "", status, episode, correctNameIndex, imageUrl))
                 }
 
                 val adapter = characterAdapter(characters)
