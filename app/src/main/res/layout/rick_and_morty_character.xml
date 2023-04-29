@@ -4,14 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
 
     <ImageView
         android:id="@+id/character_image"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="30dp"/>
+
+    <TextView
+        android:textSize="25sp"
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Name this character"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/character_image"
+        />
+
+    <Button
+        android:id="@+id/btn_1"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:text="choice1"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question" />
+
+    <Button
+        android:id="@+id/btn_2"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:text="choice1"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_1" />
+
 
 <!--    <TextView-->
 <!--        android:id="@+id/name"-->
@@ -33,27 +71,29 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:gravity="center"
-        android:text="Status: --"
+        android:text="Status: -"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:fontFamily="@font/amiko"
-        app:layout_constraintEnd_toStartOf="@id/episode"
+
         app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/character_image" />
+        app:layout_constraintStart_toStartOf="@+id/btn_2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_2" />
 
     <TextView
         android:id="@+id/episode"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:gravity="center"
-        android:text="Episode: --"
+        android:text="Episode: -"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:fontFamily="@font/amiko"
-        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintEnd_toEndOf="@+id/btn_2"
         app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintStart_toEndOf="@id/status"
-        app:layout_constraintTop_toBottomOf="@id/character_image" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+ </androidx.constraintlayout.widget.ConstraintLayout>
