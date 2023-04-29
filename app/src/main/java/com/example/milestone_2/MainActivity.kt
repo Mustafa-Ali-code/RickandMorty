@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
                     val status = characterObj.getString("status")
                     val episode = characterObj.getString("episode").substring(47, 49) // Assuming you want the first episode
                     val correctNameIndex = (0..1).random() // Generate random index for correct answer (0 or 1)
-                    characters.add(characterAdapter.RMCharacter(name, "", status, episode, correctNameIndex, imageUrl))
+                    val wrongName = characterArray.getJSONObject((0 until characterArray.length()).random()).getString("name")
+                    characters.add(characterAdapter.RMCharacter(name, wrongName, status, episode, correctNameIndex, imageUrl))
                 }
 
                 val adapter = characterAdapter(characters)
@@ -62,4 +63,5 @@ class MainActivity : AppCompatActivity() {
             }
         }]
     }
+
 }
