@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var characterList: MutableList<String>
     private lateinit var rvCharacters: RecyclerView
+    private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,9 @@ class MainActivity : AppCompatActivity() {
                 val characterArray = json.jsonObject.getJSONArray("results")
                 val characters = mutableListOf<characterAdapter.RMCharacter>()
 
-                for (i in 0 until characterArray.length()) {
+                val randomizedIndexes = (0 until characterArray.length()).shuffled()
+
+                for (i in randomizedIndexes) {
                     val characterObj = characterArray.getJSONObject(i)
                     val name = characterObj.getString("name")
                     val imageUrl = characterObj.getString("image")
@@ -63,5 +66,15 @@ class MainActivity : AppCompatActivity() {
             }
         }]
     }
+
+    private fun checkAnswer(selectedIndex: Int, correctIndex: Int) {
+        if (selectedIndex == correctIndex) {
+            score++
+            Log.d("Score", "Current score: $score")
+        } else {
+            Log.d("Score", "Current score: $score")
+        }
+    }
+
 
 }
