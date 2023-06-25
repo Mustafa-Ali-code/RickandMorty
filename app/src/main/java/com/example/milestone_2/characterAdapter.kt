@@ -5,66 +5,60 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
+class CharacterAdapter(
+    private val characters: List<RMCharacter>,
+    private val onCharacterSelected: (Boolean) -> Unit
+) :
+    RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
-class characterAdapter(private val characterList: List<RMCharacter>) : RecyclerView.Adapter<characterAdapter.ViewHolder>(){
-    data class RMCharacter(
-        val name1: String,
-        val name2: String,
-        val status: String,
-        val episode: String,
-        val correctNameIndex: Int,
-        val imageUrl: String
-    )
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val characterImageView: ImageView = itemView.findViewById(R.id.character_image)
+        private val answerButton1: Button = itemView.findViewById(R.id.btn_1)
+        private val answerButton2: Button = itemView.findViewById(R.id.btn_2)
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val characterEpisode: TextView = view.findViewById(R.id.episode)
-        val characterStatus: TextView = view.findViewById(R.id.status)
-        val characterImage: ImageView = view.findViewById(R.id.character_image)
-        val answer1: Button = view.findViewById(R.id.btn_1)
-        val answer2: Button = view.findViewById(R.id.btn_2)
+        fun bind(character: RMCharacter) {
+            Glide.with(itemView.context).load(character.imageUrl).into(characterImageView)
 
+            answerButton1.text = character.answer1
+            answerButton2.text = character.answer2
+
+            answerButton1.setOnClickListener {
+                val isAnswer1Correct = character.isAnswer1Correct
+                onCharacterSelected(isAnswer1Correct)
+            }
+
+            answerButton2.setOnClickListener {
+                val isAnswer2Correct = character.isAnswer2Correct
+                onCharacterSelected(isAnswer2Correct)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.rick_and_morty_character, parent, false)
+        val view =
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.rick_and_morty_character, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val character = characterList[position]
-
-        Glide.with(holder.itemView)
-            .load(character.imageUrl)
-            .centerCrop()
-            .into(holder.characterImage)
-
-        holder.characterStatus.text = "Status: ${character.status}"
-        holder.characterEpisode.text = "Episode: ${character.episode}"
-        holder.answer1.text = character.name1
-        holder.answer2.text = character.name2
-
-        holder.answer1.setOnClickListener {
-            checkAnswer(character, 1)
-        }
-
-        holder.answer2.setOnClickListener {
-            checkAnswer(character, 2)
-        }
+        holder.bind(characters[position])
     }
 
-    private fun checkAnswer(character: RMCharacter, selectedAnswerIndex: Int) {
-        if (selectedAnswerIndex == character.correctNameIndex) {
-            // Correct answer selected
-            // Increment correct answer count or perform any other required actions
-        } else {
-            // Incorrect answer selected
-        }
+    override fun getItemCount(): Int {
+        return characters.size
     }
 
-    override fun getItemCount() = characterList.size
+    data class RMCharacter(
+        val name: String,
+        val answer1: String,
+        val answer2: String,
+        val isAnswer1Correct: Boolean,
+        val isAnswer2Correct: Boolean,
+        val imageUrl: String,
+        val episode: String
+    )
 }
