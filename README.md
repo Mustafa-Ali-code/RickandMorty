@@ -43,7 +43,7 @@ Here's a video that demos all of the app's implemented features:
 
 <img src='https://i.imgur.com/PgmtYD3.gif' title='Video Demo' width='' alt='Video Demo' />
 
-<img src='https://i.imgur.com/EjpXONr.gif' title='Updated Video Demo' width='' alt='Updated Gif' />
+<img src='https://github.com/Mustafa-Ali-code/RickandMorty/assets/118310302/44e58e5a-591d-4257-a5d0-42e2c2b94029' title='Updated Video' width='' alt='Gif' />
 
 VIDEO created with "screenToGo"
 
